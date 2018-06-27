@@ -1,0 +1,7 @@
+---
+applications:
+- name: landa-mas-gateway-pord
+  memory: 1024M
+  path: target/landa-mas-gateway.jar
+  host: landa-mas-gateway-pord
+  domain: landaudev.com

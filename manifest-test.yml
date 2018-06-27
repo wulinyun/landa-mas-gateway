@@ -1,0 +1,7 @@
+---
+applications:
+- name: landa-mas-gateway-test
+  memory: 1024M
+  path: target/landa-mas-gateway.jar
+  host: landa-mas-gateway-test
+  domain: landaudev.com
