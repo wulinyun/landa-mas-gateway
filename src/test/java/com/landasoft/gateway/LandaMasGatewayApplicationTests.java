@@ -1,4 +1,4 @@
-package com.landasoft.mas;
+package com.landasoft.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
