@@ -31,7 +31,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/openapi/**").authenticated();
+                .antMatchers("/" + CORP_RESOURCE_ID + "/openapi/**").authenticated();
     }
 
 
