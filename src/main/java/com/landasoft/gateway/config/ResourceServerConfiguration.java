@@ -24,20 +24,20 @@ import java.io.IOException;
 @EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
-    private static final String CORP_RESOURCE_ID = "landa-mas-corp";
+    private static final String LANDA_MAS_RESOURCE_ID = "landa-mas";
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/" + CORP_RESOURCE_ID + "/openapi/**").authenticated();
+                .antMatchers("/*/openapi/**").authenticated();
     }
 
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId(CORP_RESOURCE_ID).tokenStore(tokenStore()).stateless(true);
+        resources.resourceId(LANDA_MAS_RESOURCE_ID).tokenStore(tokenStore()).stateless(true);
     }
 
     @Bean
