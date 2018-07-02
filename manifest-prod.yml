@@ -1,7 +1,9 @@
 ---
 applications:
-- name: landa-mas-gateway-pord
+- name: landa-mas-gateway-prod
   memory: 1024M
   path: target/landa-mas-gateway.jar
-  host: landa-mas-gateway-pord
+  host: landa-mas-gateway-prod
   domain: landaudev.com
+  services:
+  - eureka-prod

@@ -1,7 +1,15 @@
 ## cloud
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: https://landa-mas-eureka-test.landaudev.com/eureka/
+#  instance:
+#    prefer-ip-address: true
+
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: https://landa-mas-eureka-test.landaudev.com/eureka/
   instance:
-    prefer-ip-address: true
+    nonSecurePort: 80
+    hostname: ${vcap.application.uris[0]}
+  client:
+    service-url:
+      defaultZone: ${vcap.services.eureka.credentials.url}

@@ -5,3 +5,5 @@ applications:
   path: target/landa-mas-gateway.jar
   host: landa-mas-gateway-test
   domain: landaudev.com
+  services:
+  - eureka-test
