@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @SpringBootApplication(scanBasePackages = "com.landasoft")
 @EnableZuulProxy
@@ -24,6 +25,15 @@ public class LandaMasGatewayApplication {
 		corsConfiguration.addAllowedMethod("*");
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
+	}
+
+	@Bean("multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+		commonsMultipartResolver.setMaxUploadSize(10 * 1024 * 1024);//10 M
+		commonsMultipartResolver.setMaxInMemorySize(10 * 1024 * 1024);//10 M
+		commonsMultipartResolver.setDefaultEncoding("GBK");
+		return commonsMultipartResolver;
 	}
 
 	public static void main(String[] args) {
