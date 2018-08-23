@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: landa-mas-gateway
+  name: landa-mas-gateway
+  namespace: kube-system
+spec:
+  type: NodePort
+  ports:
+    - port: 8050
+      targetPort: 8050
+      nodePort: 30002
+  selector:
+    k8s-app: landa-mas-gateway

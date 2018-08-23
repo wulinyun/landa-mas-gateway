@@ -1,0 +1,30 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    k8s-app: landa-mas-gateway
+  name: landa-mas-gateway
+  namespace: kube-system
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      k8s-app: landa-mas-gateway
+  template:
+    metadata:
+      labels:
+        k8s-app: landa-mas-gateway
+    spec:
+      imagePullSecrets:
+      - name: landa-mas-secret
+#      nodeSelector:
+#        node-role.kubernetes.io/master: ""
+      containers:
+      - name: landa-mas-gateway
+        image: registry.cn-hangzhou.aliyuncs.com/landa/landa-mas:landa-mas-gateway-v1.0
+        ports:
+        - containerPort: 8050
+        env:
+          - name: JAVA_OPTS
+            value: -Deureka.client.serviceUrl.defaultZone=http://10.101.130.45:8761/eureka/
